@@ -21,11 +21,42 @@
   padding: 1rem;
   transition: border-color 0.2s ease;
   position: relative;
+  overflow: hidden;
 }
 
 .svg-box:hover {
   border-color: #646cff;
   cursor: pointer;
+}
+
+.svg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+}
+
+.svg-box:hover .svg-overlay {
+  opacity: 1;
+}
+
+.download-icon {
+  color: white;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  transition: transform 0.2s ease;
+  font-size: clamp(1.5rem, 4vmin, 3rem);
+}
+
+.svg-box:hover .download-icon {
+  transform: scale(1.1);
 }
 
 .svg-box svg {

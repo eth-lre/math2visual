@@ -8,6 +8,7 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form"
+import { Download } from "lucide-react"
 import './App.css'
 
 import { useState, useEffect } from "react";
@@ -255,6 +256,9 @@ function App() {
                 title="Click to download"
               >
                 <div dangerouslySetInnerHTML={{ __html: svgFormal }} />
+                <div className="svg-overlay">
+                  <Download className="download-icon" />
+                </div>
               </div>
               <p className="text-center font-medium text-muted-foreground">Formal Representation</p>
             </div>
@@ -266,6 +270,9 @@ function App() {
                 title="Click to download"
               >
                 <div dangerouslySetInnerHTML={{ __html: svgIntuitive }} />
+                <div className="svg-overlay">
+                  <Download className="download-icon" />
+                </div>
               </div>
               <p className="text-center font-medium text-muted-foreground">Intuitive Representation</p>
             </div>
