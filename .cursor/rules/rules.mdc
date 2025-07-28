@@ -1,0 +1,22 @@
+---
+alwaysApply: true
+---
+
+# Project goal
+
+The goal of this project is to build in interactive system based on Math2Visual with a frontend where teachers can enter a math world problem (MWP) to obtain visual(s) representing the MWP. Math2Visual is described in more details on the following web sites:
+
+- [Math2Visual Github Repository](https://github.com/eth-lre/math2visual)
+- [Math2Visual Paper](https://arxiv.org/pdf/2506.03735)
+
+## Tech Stack
+
+- Backend: Flask (Python)
+- Frontend: React (vite), TypeScript, ShadCN, and Tailwind
+
+## Description
+
+The frontend should be minimal. On the top in the middle it displays a rectangular text input box where teachers can enter MWPs. The text input box allows the user to enter texts with more than 255 characters. Below the input box there is another text input field to input the optional formula associated with the MWP. Below these inputs there is a button which says 'Generate'. While the visuals are generated, a waiting animation with gears and a message 'Generating' is shown.
+A request is sent to the backend for it to generate the visuals.
+The backend generates two visuals: One using Math2Visual's formal representation and the other using the intuitive representation.
+When the backend finished the generation of both visuals, they are sent as base64 to the frontend. The waiting animation gets replaced. New content appears below the text input fields and 'Generate' button associated with the MWP. The backend returns not only two visuals but also the associated visual language (VL) which is appears in a modifiable text field together with a 'Resubmit' button. The visuals appear below. They are displayed next to each other labeled with the corresponding type of representation (formal/intuitive) at the bottom. When the user hovers over an image its border is highlighted and the image is downloadable.

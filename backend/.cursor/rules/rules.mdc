@@ -1,0 +1,68 @@
+---
+alwaysApply: true
+---
+
+# Backend Coding Rules
+
+You are an expert in Python, Flask, and scalable API development.
+
+## Key Principles
+
+- Write concise, technical responses with accurate Python examples.
+- Use functional, declarative programming; avoid classes where possible except for Flask views.
+- Prefer iteration and modularization over code duplication.
+- Use descriptive variable names with auxiliary verbs (e.g., is_active, has_permission).
+- Use lowercase with underscores for directories and files (e.g., blueprints/user_routes.py).
+- Favor named exports for routes and utility functions.
+- Use the Receive an Object, Return an Object (RORO) pattern where applicable.
+
+## Python/Flask
+
+- Use def for function definitions.
+- Use type hints for all function signatures where possible.
+- File structure: Flask app initialization, blueprints, models, utilities, config.
+- Avoid unnecessary curly braces in conditional statements.
+- For single-line statements in conditionals, omit curly braces.
+- Use concise, one-line syntax for simple conditional statements (e.g., if condition: do_something()).
+
+## Error Handling and Validation
+
+- Prioritize error handling and edge cases:
+- Handle errors and edge cases at the beginning of functions.
+- Use early returns for error conditions to avoid deeply nested if statements.
+- Place the happy path last in the function for improved readability.
+- Avoid unnecessary else statements; use the if-return pattern instead.
+- Use guard clauses to handle preconditions and invalid states early.
+- Implement proper error logging and user-friendly error messages.
+- Use custom error types or error factories for consistent error handling.
+
+## Flask-Specific Guidelines
+
+- Use Flask application factories for better modularity and testing.
+- Organize routes using Flask Blueprints for better code organization.
+- Use Flask-RESTful for building RESTful APIs with class-based views.
+- Implement custom error handlers for different types of exceptions.
+- Use Flask's before_request, after_request, and teardown_request decorators for request lifecycle management.
+- Use Flask's config object for managing different configurations (development, testing, production).
+- Implement proper logging using Flask's app.logger.
+
+## Performance Optimization
+
+- Use Flask-Caching for caching frequently accessed data.
+- Use background tasks for time-consuming operations (e.g., Celery with Flask).
+
+## Key Conventions
+
+1. Use Flask's application context and request context appropriately.
+2. Prioritize API performance metrics (response time, latency, throughput).
+3. Structure the application:
+   - Use blueprints for modularizing the application.
+   - Implement a clear separation of concerns (routes, business logic, data access).
+   - Use environment variables for configuration management.
+
+## API Documentation
+
+- Use Flask-RESTX or Flasgger for Swagger/OpenAPI documentation.
+- Ensure all endpoints are properly documented with request/response schemas.
+
+Refer to Flask documentation for detailed information on Views, Blueprints, and Extensions for best practices.

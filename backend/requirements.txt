@@ -1,0 +1,18 @@
+# Flask and web dependencies
+flask==3.0.0
+flask-cors==4.0.0
+
+# Machine learning dependencies
+torch==2.5.1
+torchvision==0.20.1
+torchaudio==2.5.1
+transformers @ git+https://github.com/huggingface/transformers.git@5fa35344755d8d9c29610b57d175efd03776ae9e
+peft @ git+https://github.com/huggingface/peft.git@aa3f41f7529ed078e9225b2fc1edbb8c71f58f99
+bitsandbytes==0.45.0
+
+# Utility dependencies
+inflect==7.3.1
+lxml==5.3.0
+ipython==8.25.0
+python-dotenv==1.0.1
+openai==1.93.0 

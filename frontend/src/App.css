@@ -1,0 +1,65 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* SVG Display Styles */
+.svg-row {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.svg-box {
+  flex: 1;
+  max-width: 500px;
+  border: 2px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 1rem;
+  transition: border-color 0.2s ease;
+  position: relative;
+}
+
+.svg-box:hover {
+  border-color: #646cff;
+  cursor: pointer;
+}
+
+.svg-box svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Responsive design for SVG display */
+@media (max-width: 768px) {
+  .svg-row {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .svg-box {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+/* Loading animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+  opacity: 0.8;
+}

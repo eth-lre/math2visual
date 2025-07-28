@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+<svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path opacity="0.1" fill-rule="evenodd" clip-rule="evenodd" d="M5 5H19C20.1046 5 21 5.89543 21 7V17C21 18.1046 20.1046 19 19 19H5C3.89543 19 3 18.1046 3 17V7C3 5.89543 3.89543 5 5 5ZM10.75 13.25V15C10.75 15.1381 10.8619 15.25 11 15.25C11.1381 15.25 11.25 15.1381 11.25 15V11C11.25 9.75736 10.2426 8.75 9 8.75C7.75736 8.75 6.75 9.75736 6.75 11V15C6.75 15.1381 6.86193 15.25 7 15.25C7.13807 15.25 7.25 15.1381 7.25 15V13.25H10.75ZM17.25 9C17.25 8.86193 17.1381 8.75 17 8.75C16.8619 8.75 16.75 8.86193 16.75 9V11.75H15.5C14.9322 11.75 14.4879 11.9654 14.1882 12.3027C13.8925 12.6353 13.75 13.0717 13.75 13.5C13.75 13.9283 13.8925 14.3647 14.1881 14.6973C14.4879 15.0346 14.9322 15.25 15.5 15.25H17C17.1381 15.25 17.25 15.1381 17.25 15V12.0033L17.25 12L17.25 11.9967V9Z" fill="#323232"/>
+<path d="M5 5H19C20.1046 5 21 5.89543 21 7V17C21 18.1046 20.1046 19 19 19H5C3.89543 19 3 18.1046 3 17V7C3 5.89543 3.89543 5 5 5Z" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M7 15V11C7 9.89543 7.89543 9 9 9V9C10.1046 9 11 9.89543 11 11V15" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M17 9V15" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M17 12H15.5C13.5 12 13.5 15 15.5 15H17" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M7 13H11" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

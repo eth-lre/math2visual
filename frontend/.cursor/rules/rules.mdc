@@ -1,0 +1,10 @@
+---
+alwaysApply: true
+---
+
+# UI implementation
+
+- You should use ShadCN components whenever possible.
+- The UI design should adhere best practices
+- Additionally, keep it simple and minimal and rely on responsive design
+- Code written should adhere to React & TypeScript best practices
