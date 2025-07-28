@@ -90,43 +90,40 @@ def generate():
     if os.path.exists(output_file):
         os.remove(output_file)
     ok_formal = render_svgs_from_data(output_file, resources, data_formal)
+    formal_error = None
     if ok_formal:
         with open(output_file, "r") as f1:
             svg_formal = f1.read()
     else:
-        svg_formal = "<p style='color:#a00'>Cannot generate formal visualization.</p>"
+        svg_formal = None
+        formal_error = "Could not generate formal visualization."
+    
     # 3b) Render Intuitive (non-fatal)
     if os.path.exists(intuitive_file):
         os.remove(intuitive_file)
     ok_intu = render_intuitive(intuitive_file, resources, data_intuitive)
+    intuitive_error = None
     if ok_intu:
         with open(intuitive_file, "r") as f2:
             svg_intuitive = f2.read()
     else:
-        svg_intuitive = "<p style='color:#a00'>Cannot generate intuitive visualization.</p>"
+        svg_intuitive = None
+        intuitive_error = "Could not generate intuitive visualization."
 
-    # 4) Read back the XML
-    # with open(output_file, "r")      as f: svg_formal    = f.read()
-    # with open(intuitive_file, "r")   as f: svg_intuitive = f.read()
+    # 4) Archive timestamped copies
     ts = datetime.now().strftime("%Y%m%d%H%M%S")
-    if os.path.exists(output_file):
-        with open(output_file) as f: svg_formal = f.read()
-        shutil.copy(output_file,    os.path.join(output_dir, f"formal_{ts}.svg"))
-    if os.path.exists(intuitive_file):
-        with open(intuitive_file) as f: svg_intuitive = f.read()
+    if ok_formal and os.path.exists(output_file):
+        shutil.copy(output_file, os.path.join(output_dir, f"formal_{ts}.svg"))
+    if ok_intu and os.path.exists(intuitive_file):
         shutil.copy(intuitive_file, os.path.join(output_dir, f"intuitive_{ts}.svg"))
-    # 5) Archive timestamped copies
-    
 
-   
-    
-    
-
-    # 6) Return the DSL and SVG XML
+    # 5) Return the DSL and SVG XML with error information
     return jsonify({
         "visual_language": dsl,
-        "svg_formal":     svg_formal,
-        "svg_intuitive":  svg_intuitive
+        "svg_formal": svg_formal,
+        "svg_intuitive": svg_intuitive,
+        "formal_error": formal_error,
+        "intuitive_error": intuitive_error
     })
 
 if __name__=="__main__":

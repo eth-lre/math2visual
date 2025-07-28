@@ -32,8 +32,10 @@ type ResubmitData = z.infer<typeof resubmitSchema>
 // Type definitions
 interface ApiResponse {
   visual_language: string;
-  svg_formal: string;
-  svg_intuitive: string;
+  svg_formal: string | null;
+  svg_intuitive: string | null;
+  formal_error?: string;
+  intuitive_error?: string;
   error?: string;
 }
 
@@ -49,6 +51,8 @@ function App() {
   const [loading, setLoading] = useState<boolean>(false);
   const [svgFormal, setSvgFormal] = useState<string | null>(null);
   const [svgIntuitive, setSvgIntuitive] = useState<string | null>(null);
+  const [formalError, setFormalError] = useState<string | null>(null);
+  const [intuitiveError, setIntuitiveError] = useState<string | null>(null);
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -70,6 +74,8 @@ function App() {
     setLoading(true);
     setSvgFormal(null);
     setSvgIntuitive(null);
+    setFormalError(null);
+    setIntuitiveError(null);
 
     try {
       const res = await fetch("http://localhost:5001/api/generate", {
@@ -82,6 +88,8 @@ function App() {
       setVl(result.visual_language);
       setSvgFormal(result.svg_formal);
       setSvgIntuitive(result.svg_intuitive);
+      setFormalError(result.formal_error || null);
+      setIntuitiveError(result.intuitive_error || null);
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : "An unknown error occurred";
       setError(errorMessage);
@@ -96,6 +104,8 @@ function App() {
     setVl(null);
     setSvgFormal(null);
     setSvgIntuitive(null);
+    setFormalError(null);
+    setIntuitiveError(null);
 
     try {
       const res = await fetch("http://localhost:5001/api/generate", {
@@ -108,6 +118,8 @@ function App() {
       setVl(result.visual_language);
       setSvgFormal(result.svg_formal);
       setSvgIntuitive(result.svg_intuitive);
+      setFormalError(result.formal_error || null);
+      setIntuitiveError(result.intuitive_error || null);
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : "An unknown error occurred";
       setError(errorMessage);
@@ -244,37 +256,53 @@ function App() {
         )}
       </div>
 
-      {svgFormal && svgIntuitive && (
+      {(svgFormal || formalError || svgIntuitive || intuitiveError) && (
         <div className="mt-12">
           <h2 className="text-2xl font-semibold mb-6 text-center">Generated Visualizations</h2>
           
           <div className="svg-row">
             <div className="space-y-4">
-              <div 
-                className="svg-box"
-                onClick={() => downloadSvg(svgFormal, 'formal-visualization.svg')}
-                title="Click to download"
-              >
-                <div dangerouslySetInnerHTML={{ __html: svgFormal }} />
-                <div className="svg-overlay">
-                  <Download className="download-icon" />
+              {svgFormal ? (
+                <>
+                  <div 
+                    className="svg-box"
+                    onClick={() => downloadSvg(svgFormal, 'formal-visualization.svg')}
+                    title="Click to download"
+                  >
+                    <div dangerouslySetInnerHTML={{ __html: svgFormal }} />
+                    <div className="svg-overlay">
+                      <Download className="download-icon" />
+                    </div>
+                  </div>
+                  <p className="text-center font-medium text-muted-foreground">Formal Representation</p>
+                </>
+              ) : formalError ? (
+                <div className="svg-box error-box">
+                  <p className="text-destructive font-medium">{formalError}</p>
                 </div>
-              </div>
-              <p className="text-center font-medium text-muted-foreground">Formal Representation</p>
+              ) : null}
             </div>
             
             <div className="space-y-4">
-              <div 
-                className="svg-box"
-                onClick={() => downloadSvg(svgIntuitive, 'intuitive-visualization.svg')}
-                title="Click to download"
-              >
-                <div dangerouslySetInnerHTML={{ __html: svgIntuitive }} />
-                <div className="svg-overlay">
-                  <Download className="download-icon" />
+              {svgIntuitive ? (
+                <>
+                  <div 
+                    className="svg-box"
+                    onClick={() => downloadSvg(svgIntuitive, 'intuitive-visualization.svg')}
+                    title="Click to download"
+                  >
+                    <div dangerouslySetInnerHTML={{ __html: svgIntuitive }} />
+                    <div className="svg-overlay">
+                      <Download className="download-icon" />
+                    </div>
+                  </div>
+                  <p className="text-center font-medium text-muted-foreground">Intuitive Representation</p>
+                </>
+              ) : intuitiveError ? (
+                <div className="svg-box error-box">
+                  <p className="text-destructive font-medium">{intuitiveError}</p>
                 </div>
-              </div>
-              <p className="text-center font-medium text-muted-foreground">Intuitive Representation</p>
+              ) : null}
             </div>
           </div>
         </div>

@@ -35,6 +35,17 @@
   cursor: pointer;
 }
 
+.error-box {
+  border-color: #ef4444 !important;
+  background-color: #fef2f2;
+  cursor: default !important;
+}
+
+.error-box:hover {
+  border-color: #ef4444 !important;
+  cursor: default !important;
+}
+
 .svg-overlay {
   position: absolute;
   top: 0;
