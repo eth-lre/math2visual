@@ -1,5 +1,5 @@
 # <img src="math2visual_title.png" width="24" height="24"> Math2Visual
-Generating Pedagogically Meaningful Visuals for Math Word Problems: A New Benchmark and Analysis of Text-to-Image Models
+Generating Pedagogically Meaningful Visuals for Math Word Problems: A New Benchmark and Analysis of Text-to-Image Models, ACL 2025 Findings
 
 📄 **[ACL 2025 Findings Paper — Math2Visual](https://aclanthology.org/2025.findings-acl.586/)**  
 
